@@ -1,18 +1,23 @@
 <?php
 	session_start();
 	$session=session_id();
-	@define ( '_lib' , '../lib/');
+	@define ( '_template' , '../templates/');
+	@define ( '_source' , '../sources/');
+	@define ( '_lib' , '../admin/lib/');
+
+	if(!isset($_SESSION['lang']))
+	{
+		$_SESSION['lang']='';
+	}
+	$lang=$_SESSION['lang'];
+	require_once _source."lang$lang.php";
 	include_once _lib."config.php";
 	include_once _lib."AntiSQLInjection.php";
 	include_once _lib."constant.php";
 	include_once _lib."functions.php";
 	include_once _lib."class.database.php";
 	include_once _lib."functions_user.php";
-	$d = new database($config['database']);
+	include_once _lib."functions_giohang.php";
 	include_once _lib."nina_firewall.php";
-	$login_name = 'NINACO';
-	if(checkPermission()==false){
-		header('Content-Type: text/html; charset=utf-8');
-		die("Bạn Không có quyền vào đây !");
-	}
+	include_once _lib."file_requick.php";
 ?>

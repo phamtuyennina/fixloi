@@ -1,10 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php
+	session_start();
+	$session=session_id();
+	@define ( '_source' , '../sources/');
+	if(!isset($_SESSION['lang']))
+		$_SESSION['lang']='';
+	$lang=$_SESSION['lang'];	
+	require_once _source."lang$lang.php";	
+?>
+<HTML>
+<HEAD>
+<TITLE><?=_dangchuyentrang?></TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="REFRESH" content="4; url=<?=$page_transfer?>">
-<title>:: Website Administration ::</title>
-
+</HEAD>
 <style type="text/css">
 body {
   font: 12px/20px 'Lucida Grande', Verdana, sans-serif;
@@ -13,7 +21,8 @@ body {
 }
 .container {
   margin: 20px auto;
-  width: 500px;
+  max-width: 500px;
+  width:98%;
 }
 .container .notif {
   margin: 10px 0;
@@ -38,10 +47,8 @@ body {
   color: #333;
 }
 </style>
-</head>
-
-<body>
-<div class="container">
+<BODY>
+ <div class="container">
 
  <section class="notif">
  <p><?=$showtext?></p>
@@ -49,5 +56,5 @@ body {
  <p>(<a href="<?=$page_transfer?>">Click vào đây nếu bạn không muốn đợi lâu </a>)</p>
  </section>
  </div>
-</body>
-</html>
+</BODY>
+</HTML>
